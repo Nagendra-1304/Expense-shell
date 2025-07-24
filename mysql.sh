@@ -37,33 +37,12 @@ echo "script started executing at: $(date)" | tee -a $LOG_FILE
 CHECK_ROOT
 
 dnf install mysql-server -y
-if [ $? -ne 0 ]
-then 
-   echo -e $R"mySQL is not installed, check it $N"
-   exit 1
-else
-   echo "installed"
-fi
 VALIDATE $? "Installing mySQL server"
 
 systemctl enable mysqld
-if [ $? -ne 0 ]
-then 
-   echo -e $R"mySQL is not enable, check it $N"
-   exit 1
-else
-   echo "enabled"
-fi
 VALIDATE $? "enabled mySQL server"
 
 systemctl start mysqld
-if [ $? -ne 0 ]
-then 
-   echo -e $R"mySQL is not started, check it $N"
-   exit 1
-else
-   echo "started"
-fi
 VALIDATE $? "start mySQL server"
 
 mysql -h daws81s.daws81.space -u root -pExpenseApp@1 -e 'show databases:' &>>$LOG_FILE
