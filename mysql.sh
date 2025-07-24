@@ -40,7 +40,7 @@ dnf install mysql-server -y
 VALIDATE $? "Installing mySQL server"
 
 systemctl enable mysqld
-VALIDATE $? "enabled mySQL sever"
+VALIDATE $? "enabled mySQL server"
 
 systemctl start mysqld
 VALIDATE $? "start mySQL server"
