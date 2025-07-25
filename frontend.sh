@@ -54,5 +54,6 @@ VALIDATE $? "Downloading frontend application code"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting frontend application code"
+cp /home/ec2-user/Expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 
 systemctl restart nginx
