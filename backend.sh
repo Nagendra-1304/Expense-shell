@@ -29,7 +29,7 @@ VALIDATE()
       echo -e "$2 is $R failed.... $N" | tee -a $LOG_FILE
       exit 1
   else 
-      echo -e "$2 is $G success $N" | tee -a $LOG_FILE
+      echo -e "$2 is  success " | tee -a $LOG_FILE
   fi      
 }
 
@@ -44,3 +44,6 @@ VALIDATE $? "enable nodejs:20"
 
 dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "install nodejs"
+
+useradd expense &>>$LOG_FILE
+VALIDATE $? "Creating expense user"
