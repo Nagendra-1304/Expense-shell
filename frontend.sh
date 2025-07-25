@@ -40,19 +40,19 @@ dnf install nginx -y &>>$LOG_FILE
 VALIDATE $? "installed Nginx"
 
 systemctl enable nginx &>>$LOG_FILE
-VALIDATE $? "Enabled Nginx
+VALIDATE $? "Enabled Nginx"
 
 systemctl start nginx &>>$LOG_FILE
-VALIDATE $? "started Nginx"
+VALIDATE $? "Started Nginx"
 
-rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
+rm -rf /usr/share/nginx/html/* 
 VALIDATE $? "Removing default website"
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE
-VALIDATE $? "Downloadig frontend application code"
+VALIDATE $? "Downloading frontend application code"
 
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting frontend application code"
 
-systemctl restart nginx 
+systemctl restart nginx
